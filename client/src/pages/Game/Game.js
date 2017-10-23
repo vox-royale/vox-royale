@@ -7,7 +7,7 @@ import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import Player from "./Player";
 import './game.css';
-import Footer from './Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 class Game extends Component {
 	state = {
