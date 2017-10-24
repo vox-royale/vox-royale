@@ -12,7 +12,7 @@ mongoose.connect(
   }
 );
 
-const bookSeed = [
+const phraseSeed = [
   {
     title: "She sells seashells by the seashore"
   },
@@ -30,9 +30,9 @@ const bookSeed = [
   },
 ];
 
-db.Book
+db.Phrase
   .remove({})
-  .then(() => db.Book.collection.insertMany(bookSeed))
+  .then(() => db.Phrase.collection.insertMany(phraseSeed))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);
