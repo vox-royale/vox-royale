@@ -102,8 +102,9 @@ class Game extends Component {
 					<Col size="md-1">
 					</Col>
 					<Col size="md-2">
-							
+					
 						  <div className="thumbnail" id="thumbBord1">
+						  	<h2 id="playerTitle1"> <Player name="Player One" /> </h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
            
@@ -142,7 +143,9 @@ class Game extends Component {
 						</Jumbotron>
 					</Col>
 					<Col size="md-2">
+					
 					<div className="thumbnail" id="thumbBord2">
+						<h2 id="playerTitle2"> <Player name="Player Two" /> </h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
 					</Col>
