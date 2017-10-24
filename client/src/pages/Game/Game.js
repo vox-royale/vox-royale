@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { List, ListItem } from "../../components/List";
+// import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import Player from "./Player";
@@ -64,7 +64,7 @@ class Game extends Component {
 			return;
 		};
 
-		// otherwise head to server for comparison
+		// otherwise, hit server for string comparison.
 		// returns percentage match string to display
 		API.compare(targetPhrase, userPhrase)
 			.then(res => {
@@ -72,7 +72,6 @@ class Game extends Component {
 			})
 			.catch(err => console.log(err));
 	};
-
 
 	startGame = () => {
 		clearInterval(this.state.interval);
@@ -84,6 +83,7 @@ class Game extends Component {
 			inProgress: true
 		});
 		this.loadPhrases();
+		//listen
 	};
 
 	increment = () => {
@@ -124,7 +124,7 @@ class Game extends Component {
 							</div>
 							<StartBtn onClick={() => this.startGame()}>
 								<i className="fa fa-microphone" aria-hidden="true"></i> Start
-				</StartBtn>
+							</StartBtn>
 							<br />
 							<h4>User Phrase: {this.state.userPhrase}</h4>
 							<form>
@@ -137,7 +137,7 @@ class Game extends Component {
 									disabled={(!this.state.userPhrase || !this.state.inProgress)}
 									onClick={this.handlePhraseSubmit}>
 									Submit
-					</FormBtn>
+								</FormBtn>
 							</form>
 							<h2>{this.state.roundStatus}</h2>
 						</Jumbotron>

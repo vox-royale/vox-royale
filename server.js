@@ -15,6 +15,7 @@ mongoose.Promise = Promise;
 const user = {}
 io.on('connection', (socket) => {
   console.log(socket.id + " connected");
+  
   socket.on('disconnect', function () {
     console.log(socket.id + " disconnected");
   });
