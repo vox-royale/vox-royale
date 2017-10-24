@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { List, ListItem } from "../../components/List";
+// import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 
@@ -60,7 +60,7 @@ class Game extends Component {
 			return;
 		};
 
-		// otherwise head to server for comparison
+		// otherwise, hit server for string comparison.
 		// returns percentage match string to display
 		API.compare(targetPhrase, userPhrase)
 			.then(res => {
@@ -68,7 +68,6 @@ class Game extends Component {
 			})
 			.catch(err => console.log(err));
 	};
-
 
 	startGame = () => {
 		clearInterval(this.state.interval);
@@ -80,6 +79,7 @@ class Game extends Component {
 			inProgress: true
 		});
 		this.loadPhrases();
+		//listen
 	};
 
 	increment = () => {
@@ -95,20 +95,14 @@ class Game extends Component {
 							<div id="title-container">
 								<h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
 							</div>
-							<List>
-								{this.state.phrases.map(phrase => (
-									<ListItem key={phrase._id}>
-										{<strong>{phrase.title}</strong>}
-										<br />
-									</ListItem>
-								))}
-							</List>
+							{<strong>{(!this.state.inProgress) ? "" : this.state.phrases[0].title}</strong>}
+							<br />
 							<div id="timer">
 								<h2>{this.state.inProgress ? this.state.timer : " "}</h2>
 							</div>
 							<StartBtn onClick={() => this.startGame()}>
 								<i className="fa fa-microphone" aria-hidden="true"></i> Start
-				</StartBtn>
+							</StartBtn>
 							<br />
 							<h4>User Phrase: {this.state.userPhrase}</h4>
 							<form>
@@ -121,7 +115,7 @@ class Game extends Component {
 									disabled={(!this.state.userPhrase || !this.state.inProgress)}
 									onClick={this.handlePhraseSubmit}>
 									Submit
-					</FormBtn>
+								</FormBtn>
 							</form>
 							<h2>{this.state.roundStatus}</h2>
 						</Jumbotron>
