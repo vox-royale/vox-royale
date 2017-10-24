@@ -110,6 +110,9 @@ class Game extends Component {
 					</Col>
 					<Col size="md-6">
 						<Jumbotron>
+							<div id="title-container">
+								<h1 id="vox-title">VOX Royale</h1>
+							</div>
 							<List>
 								{this.state.phrases.map(phrase => (
 									<ListItem key={phrase._id}>

@@ -4,6 +4,8 @@ import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
+import "./main.css";
+
 class Main extends Component {
   state = {
     newArticles: [],
@@ -38,9 +40,9 @@ class Main extends Component {
           <Col size="md-12">
             <Jumbotron>
                 <div id="title-container">
-                    <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
+                <img src="Favi.png" alt="mic"/>
+                    <h1 id="vox-title">VOX Royale</h1>
                 </div>
-                <img src="am1_460x288.jpg" alt="mic"/>
                 <br />
                 <br />
                 <Link to="/login">

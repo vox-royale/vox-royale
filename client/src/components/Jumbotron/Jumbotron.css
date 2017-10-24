@@ -1,5 +1,4 @@
 body {
-	background-color: white;
 	text-align: center;
 	background-color: #f5eee1;
 }
@@ -7,16 +6,15 @@ body {
 .jumbotron {
 	margin: 0 auto;
 	padding-top: 0px;
-	width: 960px;
-	max-width: 95%;
+
+	max-width: 100%;
 	background-color: #f5eee1;
+	text-align: center;
 }
 
 img {
 	padding: 20px;
-	background-color: white;
-	border-radius: 20px;
-	border: 3px solid black;
+	background-color: #f5eee1;
 }
 
 #title-container {
@@ -26,20 +24,18 @@ img {
 
 #login-container {
 	margin: 0 auto;
-	background-color: white;
+	background-color: #f5eee1;
 	padding: 20px;
 	height: 334px;
 	width: 506px;
 	max-width: 75%;
-	border-radius: 20px;
-	border: 3px solid black;
 }
 
 #sign-up {
 	margin: 0 auto;
 	width: 506px;
 	max-width: 75%;
-	text-align: left;
+	text-align: center;
 	color: black;
 	margin-top: 5px;
 	padding-left: 5px;
@@ -55,16 +51,5 @@ input {
 
 #vox-title {
 	font-size: 150px;
-	font-family: 'Rokkitt', serif;
-}
-
-#royale-badge {
-	position: absolute;
-	text-decoration: underline;
-	left: 420px;
-	top: 65px;
-	font-size: 75px;
-	font-family: 'Yesteryear', cursive;
-    transform: rotate(-15deg);
-    color: gold;
+	font-family: 'Bungee Shade';
 }

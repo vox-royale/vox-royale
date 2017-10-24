@@ -44,7 +44,7 @@ class Signup extends Component {
                     <Col size="md-12">
                         <Jumbotron>
                             <div id="title-container">
-                                <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
+                                <h1 id="vox-title">VOX Royale</h1>
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
