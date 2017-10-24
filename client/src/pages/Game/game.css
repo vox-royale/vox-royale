@@ -1,0 +1,17 @@
+#topJumbo1, #topJumbo2{
+    background-color: white;
+    text-align: center;
+    }
+
+.thumbnail {
+    background-color: #f5eee1;
+}
+#thumbBord1, #thumbBord2 {
+    border: none;
+    text-align: center;
+}
+img{
+    border: none;
+    text-align: center;
+    background-color: #f5eee1;
+}
