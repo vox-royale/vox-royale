@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const phraseSchema = new Schema({
-  phrase: { type: String, required: true },
-  numTokens: { type: Number, required: true }
+  phrase: { type: String, required: true }
 });
 
-const Phrase = mongoose.model("Book", phraseSchema);
+const Phrase = mongoose.model("Phrase", phraseSchema);
 
 module.exports = Phrase;

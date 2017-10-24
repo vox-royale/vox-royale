@@ -30,7 +30,6 @@ module.exports = function (app) {
                 console.log(error);
             }
             else {
-                console.log("data: " + data);
                 res.json(data);
             }
         });
@@ -42,13 +41,21 @@ module.exports = function (app) {
 
         User.find({username: req.body.username}, function(error, data) {
 
+            // if username was found in db
             if(data.length > 0) {
+
+                // and password is correct
                 if(data[0].password === req.body.password) {
                     status = "authenticated";
                 }
-                else(status = "invalid password");
+
+                // password is incorrect
+                else {
+                    status = "invalid password";
+                }
             }
 
+            // username not found in db
             else {
                 status = "username not found";
             }
@@ -59,13 +66,33 @@ module.exports = function (app) {
 
     app.post("/user/new", function (req, res) {
 
-        User.create({
-            username: req.body.username,
-            password: req.body.password,
-            isLoggedIn: true
-        }, function(data) {
-            console.log("data: " + data);
-            res.json(data);
+        let status = "";
+        console.log("req.body" + JSON.stringify(req.body));
+
+        User.find({username: req.body.username}, function(error, data) {
+
+            console.log("data after find: " + data);
+
+            // username was found in db
+            if(data.length > 0) {
+                status = "user already exists";
+                console.log(status);
+                res.json(status);
+            }
+
+            // username not found in db
+            else {
+                // add user to db
+                User.create({
+                    username: req.body.username,
+                    password: req.body.password,
+                    isLoggedIn: true
+                }, function(data) {
+                    status = "user added";
+                    console.log(status);
+                    res.json(status);
+                });
+            }
         });
     });
 
