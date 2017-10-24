@@ -8,6 +8,7 @@ import API from "../../utils/API";
 import Player from "./Player";
 import './game.css';
 import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 class Game extends Component {
 	state = {
@@ -93,17 +94,17 @@ class Game extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col size="md-12">
-							<h1> it is main logo </h1>
-					</Col>
-				</Row>
+					
+					<Navbar /> 
+					
+				</Row><br /><br />
 				<Row>
 					<Col size="md-1">
 					</Col>
 					<Col size="md-2">
 							
 						  <div className="thumbnail" id="thumbBord1">
-							<Player imgURL="http://icons.veryicon.com/png/Avatar/Tuxlets/Ninja%20Tux.png" alter="image1"/> 
+							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
            
 					</Col>
@@ -142,7 +143,7 @@ class Game extends Component {
 					</Col>
 					<Col size="md-2">
 					<div className="thumbnail" id="thumbBord2">
-							<Player imgURL="http://icons.veryicon.com/png/Avatar/Tuxlets/Ninja%20Tux.png" alter="image1"/> 
+							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
 					</Col>
 					<Col size="md-1">
@@ -150,7 +151,7 @@ class Game extends Component {
 				</Row><br /><br/><br/><br /><br/><br/>
 				<Row>
 					<Col size="md-12">
-						<Footer />
+						 <Footer /> 
 					</Col>
 				</Row>
 			</Container>

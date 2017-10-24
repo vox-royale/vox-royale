@@ -1,0 +1,17 @@
+#navBarColor {
+    background-color:  #9b8579;
+    color: white;
+    border: none;
+}
+#brandName {
+    color: white;
+    pointer-events: none;
+    cursor: default;
+     
+}
+#linkColor {
+    color: white;   
+}
+#linkColor:hover { 
+    color: black;
+}
