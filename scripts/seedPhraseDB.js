@@ -14,7 +14,7 @@ mongoose.connect(
 
 const bookSeed = [
   {
-    title: "She sells seashells by the seashore"
+    title: "She sells seashells by the seashore" 
   },
   {
     title: "How can a clam cram in a clean cream can"
@@ -27,7 +27,7 @@ const bookSeed = [
   },
   {
     title: "I wish to wash my Irish wristwatch"
-  },
+  }
 ];
 
 db.Book

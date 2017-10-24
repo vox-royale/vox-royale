@@ -5,6 +5,10 @@ import StartBtn from "../../components/StartBtn";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
+import Player from "./Player";
+import './game.css';
+import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 class Game extends Component {
 	state = {
@@ -90,11 +94,23 @@ class Game extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col size="md-12">
+					
+					<Navbar /> 
+					
+				</Row><br /><br />
+				<Row>
+					<Col size="md-1">
+					</Col>
+					<Col size="md-2">
+					
+						  <div className="thumbnail" id="thumbBord1">
+						  	<h2 id="playerTitle1"> <Player name="Player One" /> </h2>
+							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
+						  </div>
+           
+					</Col>
+					<Col size="md-6">
 						<Jumbotron>
-							<div id="title-container">
-								<h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
-							</div>
 							<List>
 								{this.state.phrases.map(phrase => (
 									<ListItem key={phrase._id}>
@@ -126,8 +142,23 @@ class Game extends Component {
 							<h2>{this.state.roundStatus}</h2>
 						</Jumbotron>
 					</Col>
+					<Col size="md-2">
+					
+					<div className="thumbnail" id="thumbBord2">
+						<h2 id="playerTitle2"> <Player name="Player Two" /> </h2>
+							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
+						  </div>
+					</Col>
+					<Col size="md-1">
+					</Col>
+				</Row><br /><br/><br/><br /><br/><br/>
+				<Row>
+					<Col size="md-12">
+						 <Footer /> 
+					</Col>
 				</Row>
 			</Container>
+             
 		);
 	}
 }

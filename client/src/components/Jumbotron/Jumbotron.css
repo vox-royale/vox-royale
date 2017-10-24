@@ -1,7 +1,7 @@
 body {
 	background-color: white;
 	text-align: center;
-	background-color: #eeeeee;
+	background-color: #f5eee1;
 }
 
 .jumbotron {
@@ -9,6 +9,7 @@ body {
 	padding-top: 0px;
 	width: 960px;
 	max-width: 95%;
+	background-color: #f5eee1;
 }
 
 img {
@@ -20,6 +21,7 @@ img {
 
 #title-container {
 	position: relative;
+	background-color: #f5eee1;
 }
 
 #login-container {
