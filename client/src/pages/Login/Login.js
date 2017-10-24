@@ -23,12 +23,7 @@ class Login extends Component {
 
         API.getUser({username: this.state.username, password: this.state.password})
         .then(res => this.setState({status: res.data}))
-        // .then(console.log(this.state.status))
         .catch(err => console.log(err));
-
-        // API.submitUserInfo(this.state.username, this.state.password)
-        // .then(res => this.setState({ status: res.data }))
-        // .catch(err => console.log(err));
 
         // clear out input forms on submit
         this.setState({ username: "", password: "" });
