@@ -1,11 +1,10 @@
 import React from 'react';
-import Link from './Link';
+// import Link from './Link';
 
 export default class Footer extends React.Component {
 
-  render() {
-
-    return (
+    render() {
+        return (
             <footer className="text-center">
                 <div className="footer-above">
                     <div className="container">
@@ -18,45 +17,47 @@ export default class Footer extends React.Component {
                                 <h3>Around the Web</h3>
                                 <ul className="list-inline">
                                 <li className="list-inline-item">
-                                    <a className="btn-social btn-outline" href="https://www.facebook.com/" target="_blank">
+                                    <a className="btn-social btn-outline" href="https://www.facebook.com/"
+                                                            target="_blank" rel="noopener noreferrer">
                                    
                                     <i className="fa fa-fw fa-facebook"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a className="btn-social btn-outline" href="https://plus.google.com/">
+                                    <a className="btn-social btn-outline" href="https://plus.google.com/"
+                                                            target="_blank" rel="noopener noreferrer">
                                     <i className="fa fa-fw fa-google-plus"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a className="btn-social btn-outline" href="https://twitter.com/">
+                                    <a className="btn-social btn-outline" href="https://twitter.com/"
+                                                            target="_blank" rel="noopener noreferrer">
                                     <i className="fa fa-fw fa-twitter"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a className="btn-social btn-outline" href="https://www.linkedin.com/feed/">
+                                    <a className="btn-social btn-outline" href="https://www.linkedin.com/feed/"
+                                                            target="_blank" rel="noopener noreferrer">
                                     <i className="fa fa-fw fa-linkedin"></i>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
-                                    <a className="btn-social btn-outline" href="">
-                                   
-                                    <i class="fa fa-github-square" aria-hidden="true"></i>
+                                    <a className="btn-social btn-outline" href=""
+                                                            target="_blank" rel="noopener noreferrer">
+                                    <i className="fa fa-github-square" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 </ul>
                             </div>
                             <div className="footer-col col-md-4">
                                 <h3>About Us</h3>
-                                <Link to="/">
                                     <li id="homePage">
                                         Home
                                     </li>
-                                </Link>
                                 <li className="list-inline-item">
                                     <a className="btn-social btn-outline" href="">
    
-                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <i className="fa fa-users" aria-hidden="true"></i>
                                     </a>
  
                                     
@@ -76,7 +77,6 @@ export default class Footer extends React.Component {
                     </div>
                 </div>
             </footer>
-            
         )
     }
 }

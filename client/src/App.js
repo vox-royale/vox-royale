@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { BrowserRouter as Router, Route} from "react-router-dom";
+// import API from "./utils/API";
 
 const App = function() {
   return <Router>

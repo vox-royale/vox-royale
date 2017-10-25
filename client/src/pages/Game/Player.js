@@ -6,11 +6,9 @@ export default class Player extends React.Component {
 
     return (
       <div className="player-div">
-        <h3> {this.props.name} </h3>
+        {<h3> {this.props.name} </h3>}
         <img src={this.props.imgURL} alt={this.props.alter} />
-        
       </div>
-
     )
   }
 }

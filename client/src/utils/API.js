@@ -19,6 +19,13 @@ export default {
 	},
 	io: function () {
 		const socket = openSocket("http://localhost:3001");
-		console.log(socket);
+		
+		socket.on("connect", function(data) {
+			socket.emit("join", "Hello Server from client id #");
+		});
+
+		socket.on("id", function(data) {
+			alert("Connected with socket ID: " + data);
+		});
 	}
 };
