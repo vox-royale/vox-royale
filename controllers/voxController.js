@@ -30,6 +30,7 @@ module.exports = function (app) {
                 console.log(error);
             }
             else {
+                console.log(data);
                 res.json(data);
             }
         });
@@ -47,6 +48,15 @@ module.exports = function (app) {
                 // and password is correct
                 if(data[0].password === req.body.password) {
                     status = "authenticated";
+                    User.findOneAndUpdate({
+                        username: req.body.username}, {
+                            socket: req.body.socket
+                    }, function(error, data) {
+                        if(error) {
+                            console.log(error);
+                        }
+                        console.log("data after socket insert: " + data);
+                    });
                 }
 
                 // password is incorrect

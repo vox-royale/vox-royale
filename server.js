@@ -10,16 +10,7 @@ const PORT = process.env.PORT || 3001;
 
 mongoose.Promise = Promise;
 
-// io.listen(PORT);
-// console.log('socket.io listening on port ', PORT);
 const user = {}
-io.on('connection', (socket) => {
-  console.log(socket.id + " connected");
-  
-  socket.on('disconnect', function () {
-    console.log(socket.id + " disconnected");
-  });
-});
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,22 +18,36 @@ app.use(bodyParser.json());
 
 const db = process.env.MONGODB_URI || "mongodb://localhost/vox-royale";
 
-mongoose.connect(db, function (error) {
+mongoose.connect(db, { useMongoClient: true }, function (error) {
 
-  if (error) {
-    console.log(error);
-  }
+	if (error) {
+		console.log(error);
+	}
 
-  else {
-    console.log("mongoose connection is successful");
-  }
+	else {
+		console.log("mongoose connection is successful");
+	}
 });
 
 app.use(express.static("client/build"));
 
 require("./controllers/voxController")(app);
 
+io.on('connection', function (client) {
+
+	console.log(client.id + " connected");
+
+	client.on("join", function (data) {
+		console.log(data + client.id);
+		client.emit("id", client.id);
+	});
+
+	client.on('disconnect', function () {
+		console.log(client.id + " disconnected");
+	});
+});
+
 server.listen(PORT, function () {
-  console.log("App running on http://localhost:" + PORT);
-  console.log('socket.io listening on port ', PORT);
+	console.log("App running on http://localhost:" + PORT);
+	console.log('socket.io listening on port ', PORT);
 });

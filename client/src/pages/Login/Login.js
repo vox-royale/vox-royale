@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import openSocket from "socket.io-client";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
@@ -10,18 +11,33 @@ class Login extends Component {
     state = {
         username: "",
         password: "",
-        status: ""
+        status: "",
+        socket: ""
     };
 
     componentDidMount = () => {
 
+        const socket = openSocket("http://localhost:3001");
+        const login = this;
+		
+		socket.on("connect", function(data) {
+			socket.emit("join", "Hello Server from client id #");
+		});
+
+		socket.on("id", function(data) {
+            login.setState({ socket: data });
+		});
     }
 
     handleUserSubmit = event => {
 
         event.preventDefault();
 
-        API.getUser({username: this.state.username, password: this.state.password})
+        API.getUser({
+            username: this.state.username,
+            password: this.state.password,
+            socket: this.state.socket
+        })
         .then(res => this.setState({status: res.data}))
         .catch(err => console.log(err));
 
@@ -47,7 +63,7 @@ class Login extends Component {
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
-                                    <br />
+                                    <h3>Socket ID: {this.state.socket}</h3>
                                     <label>Username {this.state.username}</label><br />
                                     <input
                                         name="username"
