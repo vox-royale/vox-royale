@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-// import { List, ListItem } from "../../components/List";
+import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import Player from "./Player";
@@ -19,10 +19,13 @@ class Game extends Component {
 		timer: 0,
 		roundStatus: "",
 		interval: "",
-		inProgress: false
+		inProgress: false,
+		playerOne: "Player One",
+		playerTwo: "Player Two"
 	};
 
 	componentDidMount() {
+		API.io();
 		this.setState({phrases: [{title: "Press start to begin"}]});
 	}
 
@@ -94,9 +97,7 @@ class Game extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					
 					<Navbar /> 
-					
 				</Row><br /><br />
 				<Row>
 					<Col size="md-1">
@@ -104,7 +105,7 @@ class Game extends Component {
 					<Col size="md-2">
 					
 						  <div className="thumbnail" id="thumbBord1">
-						  	<h2 id="playerTitle1"> <Player name="Player One" /> </h2>
+						  	<h2 id="playerTitle1">{this.state.playerOne}</h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
            
@@ -145,7 +146,7 @@ class Game extends Component {
 					<Col size="md-2">
 					
 					<div className="thumbnail" id="thumbBord2">
-						<h2 id="playerTitle2"> <Player name="Player Two" /> </h2>
+						<h2 id="playerTitle2">{this.state.playerTwo}</h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
 					</Col>
