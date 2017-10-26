@@ -10,6 +10,7 @@ import './game.css';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 
+
 class Game extends Component {
 	state = {
 		phrases: [],
@@ -56,7 +57,7 @@ class Game extends Component {
 		clearInterval(this.state.interval);
 
 		let targetPhrase = this.state.phrases[0].title.trim();
-		let userPhrase = this.state.userPhrase.trim();
+		let userPhrase = document.getElementById("inputPhrase").innerHTML
 
 		// quickly check for exact match
 		if (targetPhrase === userPhrase) {
@@ -75,6 +76,7 @@ class Game extends Component {
 
 
 	startGame = () => {
+//		startListening;
 		clearInterval(this.state.interval);
 		this.setState({
 			timer: 0,
@@ -125,7 +127,7 @@ class Game extends Component {
 								<i className="fa fa-microphone" aria-hidden="true"></i> Start
 				</StartBtn>
 							<br />
-							<h4>User Phrase: {this.state.userPhrase}</h4>
+							<h4 id = "inputPhrase">User Phrase: {this.state.userPhrase}</h4>
 							<form>
 								<Input
 									className="text"
@@ -133,7 +135,7 @@ class Game extends Component {
 									onChange={this.handleInputChange}
 									name="userPhrase" />
 								<FormBtn
-									disabled={(!this.state.userPhrase || !this.state.inProgress)}
+//									disabled={(!this.state.userPhrase || !this.state.inProgress)}
 									onClick={this.handlePhraseSubmit}>
 									Submit
 					</FormBtn>
