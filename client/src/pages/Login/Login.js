@@ -21,18 +21,18 @@ class Login extends Component {
 
         const socket = openSocket("http://localhost:3001");
         const login = this;
-		
-		socket.on("connect", function(data) {
-			socket.emit("join", "Hello Server from client id #");
-		});
 
-		socket.on("id", function(data) {
+        socket.on("connect", function (data) {
+            socket.emit("join", "Hello Server from client id #");
+        });
+
+        socket.on("id", function (data) {
             login.setState({ socket: data });
-		});
+        });
     }
 
-   
-       handleUserSubmit = event => {
+
+    handleUserSubmit = event => {
         const login = this;
         event.preventDefault();
         API.getUser({
@@ -40,30 +40,29 @@ class Login extends Component {
             password: this.state.password,
             socket: this.state.socket
         })
-        .then(function (res) {
-            login.setState({status: res.data});
-            if (login.state.status === "username not found"){
-                    login.setState({ action: "Username not found. Please, sign up."});
-                    
-            }
-            if (login.state.status === "authenticated"){
-                
-                                    login.setState({ action: "User found. Enjoy your game!"});
-                                    <Link to="/game">Play </Link>
-            }
-            if (login.state.status === "invalid password"){
-                
-                                    login.setState({ action: "Invalid password. Please, try again"})
-            }
-        })
-        .catch(err => console.log(err));
+            .then(function (res) {
+                login.setState({ status: res.data });
+                if (login.state.status === "username not found") {
+                    login.setState({ action: "Username not found. Please, sign up." });
+
+                }
+                if (login.state.status === "authenticated") {
+
+                    login.setState({ action: "User found. Enjoy your game!" });
+                }
+                if (login.state.status === "invalid password") {
+
+                    login.setState({ action: "Invalid password. Please, try again" })
+                }
+            })
+            .catch(err => console.log(err));
 
         // clear out input forms on submit
         this.setState({ username: "", password: "" });
     };
-    
 
-  
+
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -75,7 +74,7 @@ class Login extends Component {
     render = () => {
         return (
             <Container fluid>
-                
+
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
@@ -100,40 +99,43 @@ class Login extends Component {
                                         value={this.state.password}
                                         placeholder="Password" />
                                     <br /><br />
-                                    <FormBtn  data-toggle="modal" data-target="#exampleModalLong"
+                                    <FormBtn data-toggle="modal" data-target="#exampleModalLong"
                                         disabled={(!this.state.username || !this.state.password)}
                                         onClick={this.handleUserSubmit}>
                                         Login
 				    	            </FormBtn>
 
-        {/* modal --start */}
+                                    {/* modal --start */}
 
-        <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-            <div className="modal-content" id="modalContent">
-                <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle"> <h2>{this.state.action}</h2></h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div className="modal-body">
-                {this.state.status}
-                </div>
-                <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                {/* <button type="button" className="btn btn-primary" >Save changes</button> */}
-                </div>
-            </div>
-            </div>
-        </div>
-        {/* modal --end */}
+                                    <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div className="modal-dialog" role="document">
+                                            <div className="modal-content" id="modalContent">
+                                                <div className="modal-header">
+                                                    <h2 className="modal-title" id="exampleModalLongTitle"> {this.state.action}</h2>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    {this.state.status}
+                                                </div>
+                                                <div className="modal-footer">
+                                                    {this.state.status === "authenticated" ? (
+                                                        <Link to="/game" className="btn btn-secondary">Start</Link>
+                                                    ) : (
+                                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* modal --end */}
 
 
-                                   <Link to="/game"> 
+                                    <Link to="/game">
                                         {/* <h2>{this.state.status}</h2> */}
                                         {/* <h2>{this.state.action}</h2> */}
-                                   </Link>
+                                    </Link>
                                 </form>
                             </div>
                             <div id="sign-up">
