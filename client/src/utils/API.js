@@ -1,4 +1,5 @@
 import axios from "axios";
+import openSocket from "socket.io-client";
 
 export default {
 	getUsers: function () {
@@ -13,7 +14,18 @@ export default {
 	getUser: function (user) {
 		return axios.post("/user", user);
 	},
-	submitUserInfo: function (user) {
-		return axios.post("/user/new", { username: user.username, password: user.password });
+	submitNewUserInfo: function (user) {
+		return axios.post("/user/new", user);
+	},
+	io: function () {
+		const socket = openSocket("http://localhost:3001");
+		
+		socket.on("connect", function(data) {
+			socket.emit("join", "Hello Server from client id #");
+		});
+
+		socket.on("id", function(data) {
+			alert("Connected with socket ID: " + data);
+		});
 	}
 };

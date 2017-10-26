@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const db = require("../models/Phrase");
-mongoose.Promise = global.Promise;
+const db = require("../models");
 
-console.log("db.Phrase: " + db.Phrase);
+mongoose.Promise = global.Promise;
 
 // This file empties the Books collection and inserts the books below
 
@@ -15,16 +14,19 @@ mongoose.connect(
 
 const phraseSeed = [
   {
-    phrase: "The Dead Zone",
-    numTokens: 3
+    title: "She sells seashells by the seashore"
   },
   {
-    phrase: "The Free Zone",
-    numTokens: 3
+    title: "How can a clam cram in a clean cream can"
   },
   {
-    phrase: "The Open Zone",
-    numTokens: 3
+    title: "I saw Susie sitting in a shoeshine shop"
+  },
+  {
+    title: "Can you can a can as a canner can can a can"
+  },
+  {
+    title: "I wish to wash my Irish wristwatch"
   }
 ];
 

@@ -9,8 +9,8 @@ var UserSchema = new Schema({
   email: { type: String },
   isLoggedIn: { type: Boolean, default: false },
   wins: { type: Number, default: 0 },
-  losses: {type: Number, default: 0 } 
-  // notes: [{ type: Schema.Types.ObjectId, ref: "Note" }]
+  losses: {type: Number, default: 0 },
+  socket: { type: Schema.Types.ObjectId, ref: "Socket" }
 });
 
 var User = mongoose.model("User", UserSchema);

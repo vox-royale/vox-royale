@@ -33,9 +33,8 @@ class Login extends Component {
 
    
        handleUserSubmit = event => {
-
-        event.preventDefault();
         const login = this;
+        event.preventDefault();
         API.getUser({
             username: this.state.username,
             password: this.state.password,

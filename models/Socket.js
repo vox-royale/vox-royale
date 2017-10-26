@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const phraseSchema = new Schema({
-  phrase: { type: String, required: true }
+  socket: { type: String, required: true }
 });
 
-const Phrase = mongoose.model("Phrase", phraseSchema);
+const Socket = mongoose.model("Socket", socketSchema);
 
 module.exports = Phrase;
