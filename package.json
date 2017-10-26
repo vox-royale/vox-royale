@@ -33,7 +33,7 @@
     "request": "^2.83.0",
     "vcap_services": "^0.3.4",
     "watson-developer-cloud": "^2.41.1",
-    "watson-html5-speech-recognition": "^0.6.6"
+    "watson-html5-speech-recognition": "^0.6.6",
     "socket.io": "^2.0.4"
   }
 }
