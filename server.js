@@ -5,12 +5,11 @@ const io = require('socket.io')(server);
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+let User = require("./models/User.js");
 
 const PORT = process.env.PORT || 3001;
 
 mongoose.Promise = Promise;
-
-const user = {}
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,6 +43,17 @@ io.on('connection', function (client) {
 
 	client.on('disconnect', function () {
 		console.log(client.id + " disconnected");
+
+		User.findOneAndUpdate({
+			socket: client.id}, {
+				isLoggedIn: false,
+				socket: ""
+			}).exec(function(error, data) {
+
+				if(error) {
+					console.log(error);
+				}
+		});
 	});
 });
 

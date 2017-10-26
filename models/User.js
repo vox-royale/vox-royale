@@ -10,7 +10,7 @@ var UserSchema = new Schema({
   isLoggedIn: { type: Boolean, default: false },
   wins: { type: Number, default: 0 },
   losses: {type: Number, default: 0 },
-  socket: { type: Schema.Types.ObjectId, ref: "Socket" }
+  socket: { type: String }
 });
 
 var User = mongoose.model("User", UserSchema);
