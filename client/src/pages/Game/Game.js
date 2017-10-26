@@ -128,11 +128,18 @@ class Game extends Component {
 	render() {
 		return (
 			<Container fluid>
+				
 				<Row>
 					<Col size="md-12">
-						<br /><br /><br />
-						<h2>{this.state.round === 0 ? "" : "Round: " + this.state.round}</h2>
-						<h3>{this.state.inProgress ? this.state.playerUp : ""}</h3>
+						<p  id="roundHeight">
+							<h2>{this.state.round === 0 ? " " : "Round: " + this.state.round}</h2>
+							<h3>{this.state.inProgress ? this.state.playerUp : " "}</h3>
+						</p>
+					</Col>
+				</Row>
+				<Row>
+					<Col size="md-12">
+					<p  id="textPhrase">{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.phrases[0].phrase}</strong>}</p>
 					</Col>
 				</Row>
 				<Row>
@@ -147,8 +154,7 @@ class Game extends Component {
 					</Col>
 					<Col size="md-6">
 						<Jumbotron>
-							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.phrases[0].phrase}</strong>}
-							<br />
+							
 							<div id="timer">
 								<h2>{this.state.inProgress ? this.state.timer : " "}</h2>
 							</div>
@@ -168,6 +174,10 @@ class Game extends Component {
 									onClick={this.handlePhraseSubmit}>
 									Submit
 								</FormBtn>
+								<p  id="userStatus">
+									<h2 id="fontH2">{this.state.roundStatus}</h2>
+									<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
+								</p>
 							</form>
 						</Jumbotron>
 					</Col>
@@ -182,12 +192,14 @@ class Game extends Component {
 					<Col size="md-1">
 					</Col>
 				</Row>
-				<Row>
+				{/* <Row>
 					<Col size="md-12">
-						<h2>{this.state.roundStatus}</h2>
-						<h2>{this.state.roundScoreDisplay}</h2>
+						<p  id="userStatus">
+							<h2 id="fontH2">{this.state.roundStatus}</h2>
+							<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
+						</p>
 					</Col>
-				</Row>
+				</Row> */}
 				<br />
 				<Row>
 					<Col size="md-12">

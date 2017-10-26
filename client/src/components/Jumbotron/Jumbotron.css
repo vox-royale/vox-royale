@@ -32,7 +32,7 @@ img {
 	width: 506px;
 	max-width: 75%;
 	border-radius: 20px;
-	border: 3px solid black;
+	/* border: 3px solid black; */
 }
 
 #sign-up {
