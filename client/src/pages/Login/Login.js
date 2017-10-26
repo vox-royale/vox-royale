@@ -6,44 +6,63 @@ import StartBtn from "../../components/StartBtn";
 import { Link } from "react-router-dom";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
+import './login.css';
 
 class Login extends Component {
     state = {
         username: "",
         password: "",
         status: "",
-        socket: ""
+        socket: "",
+        action: ""
     };
 
     componentDidMount = () => {
 
         const socket = openSocket("http://localhost:3001");
         const login = this;
-		
-		socket.on("connect", function(data) {
-			socket.emit("join", "Hello Server from client id #");
-		});
 
-		socket.on("id", function(data) {
+        socket.on("connect", function (data) {
+            socket.emit("join", "Hello Server from client id #");
+        });
+
+        socket.on("id", function (data) {
             login.setState({ socket: data });
-		});
+        });
     }
 
+
     handleUserSubmit = event => {
-
+        const login = this;
         event.preventDefault();
-
         API.getUser({
             username: this.state.username,
             password: this.state.password,
             socket: this.state.socket
         })
-        .then(res => this.setState({status: res.data}))
-        .catch(err => console.log(err));
+            .then(function (res) {
+                login.setState({ status: res.data });
+                if (login.state.status === "username not found") {
+                    login.setState({ action: "Username not found. Please, sign up." });
+
+                }
+                if (login.state.status === "authenticated") {
+
+                    login.setState({ action: "User found. Enjoy your game!" });
+                }
+                if (login.state.status === "invalid password") {
+
+                    login.setState({ action: "Invalid password. Please, try again" })
+                }
+            })
+            .catch(err => console.log(err));
 
         // clear out input forms on submit
         this.setState({ username: "", password: "" });
     };
+
+
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -55,6 +74,7 @@ class Login extends Component {
     render = () => {
         return (
             <Container fluid>
+
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
@@ -79,12 +99,43 @@ class Login extends Component {
                                         value={this.state.password}
                                         placeholder="Password" />
                                     <br /><br />
-                                    <FormBtn
+                                    <FormBtn data-toggle="modal" data-target="#exampleModalLong"
                                         disabled={(!this.state.username || !this.state.password)}
                                         onClick={this.handleUserSubmit}>
                                         Login
 				    	            </FormBtn>
-                                    <h2>{this.state.status}</h2>
+
+                                    {/* modal --start */}
+
+                                    <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div className="modal-dialog" role="document" id="modalDialog">
+                                            <div className="modal-content" id="modalContent">
+                                                <div className="modal-header">
+                                                    <h2 className="modal-title" id="exampleModalLongTitle"> {this.state.action}</h2>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    {this.state.status}
+                                                </div>
+                                                <div className="modal-footer">
+                                                    {this.state.status === "authenticated" ? (
+                                                        <Link to="/game" className="btn btn-secondary">Start</Link>
+                                                    ) : (
+                                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* modal --end */}
+
+
+                                    <Link to="/game">
+                                        {/* <h2>{this.state.status}</h2> */}
+                                        {/* <h2>{this.state.action}</h2> */}
+                                    </Link>
                                 </form>
                             </div>
                             <div id="sign-up">
