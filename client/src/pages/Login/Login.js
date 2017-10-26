@@ -108,7 +108,7 @@ class Login extends Component {
                                     {/* modal --start */}
 
                                     <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                        <div className="modal-dialog" role="document">
+                                        <div className="modal-dialog" role="document" id="modalDialog">
                                             <div className="modal-content" id="modalContent">
                                                 <div className="modal-header">
                                                     <h2 className="modal-title" id="exampleModalLongTitle"> {this.state.action}</h2>
