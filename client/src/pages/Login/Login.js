@@ -3,7 +3,7 @@ import openSocket from "socket.io-client";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { Link } from "react-router-dom";
+import { Link, withRouter, BrowserRouter, BrowserRouterProps } from "react-router-dom";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import './login.css';
@@ -47,8 +47,9 @@ class Login extends Component {
 
                 }
                 if (login.state.status === "authenticated") {
-
-                    login.setState({ action: "User found. Enjoy your game!" });
+                    
+                    login.setState({ action: "Enjoy your game!" });
+                    console.log("got here!");
                 }
                 if (login.state.status === "invalid password") {
 
@@ -70,6 +71,7 @@ class Login extends Component {
             [name]: value
         });
     };
+
 
     render = () => {
         return (
@@ -121,7 +123,13 @@ class Login extends Component {
                                                 </div>
                                                 <div className="modal-footer">
                                                     {this.state.status === "authenticated" ? (
-                                                        <Link to="/game" className="btn btn-secondary">Start</Link>
+                                                        
+                                                        <Link to="/game">
+                                                            <StartBtn >
+                                                                <i className="fa fa-microphone" aria-hidden="true" ></i> Start
+                                                            </StartBtn>
+                                                        </Link>
+                                                        
                                                     ) : (
                                                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     )}
@@ -132,10 +140,7 @@ class Login extends Component {
                                     {/* modal --end */}
 
 
-                                    <Link to="/game">
-                                        {/* <h2>{this.state.status}</h2> */}
-                                        {/* <h2>{this.state.action}</h2> */}
-                                    </Link>
+                                    
                                 </form>
                             </div>
                             <div id="sign-up">
@@ -144,11 +149,9 @@ class Login extends Component {
                                 </Link>
                             </div>
                             <br />
-                            <Link to="/game">
                                 <StartBtn>
                                     <i className="fa fa-microphone" aria-hidden="true"></i> Start
                                 </StartBtn>
-                            </Link>
                         </Jumbotron>
                     </Col>
                 </Row>
@@ -157,4 +160,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

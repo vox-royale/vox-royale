@@ -1,3 +1,7 @@
+
+const compression = require('compression');
+const path = require('path');
+
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
@@ -11,6 +15,8 @@ const PORT = process.env.PORT || 3001;
 
 mongoose.Promise = Promise;
 
+app.use(compression());
+app.use('/api/speech-to-text/', require('./stt-token.js'));
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
