@@ -51,9 +51,6 @@ export default class Footer extends React.Component {
                             </div>
                             <div className="footer-col col-md-4">
                                 <h3>About Us</h3>
-                                    <li id="homePage">
-                                        Home
-                                    </li>
                                 <li className="list-inline-item">
                                     <a className="btn-social btn-outline" href="">
    

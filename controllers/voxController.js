@@ -3,7 +3,7 @@ let Phrase = require("../models/Phrase.js");
 let User = require("../models/User.js");
 var path = require("path");
 
-module.exports = function (app) {
+module.exports = function (app, client) {
 
     // returns only one random phrase for now
     app.get("/phrases", function (req, res) {
@@ -48,14 +48,15 @@ module.exports = function (app) {
                 // and password is correct
                 if(data[0].password === req.body.password) {
                     status = "authenticated";
+                    console.log("socket: " + req.body.socket);
                     User.findOneAndUpdate({
                         username: req.body.username}, {
-                            socket: req.body.socket
+                            socket: req.body.socket,
+                            isLoggedIn: true
                     }, function(error, data) {
                         if(error) {
                             console.log(error);
                         }
-                        console.log("data after socket insert: " + data);
                     });
                 }
 
@@ -96,7 +97,8 @@ module.exports = function (app) {
                 User.create({
                     username: req.body.username,
                     password: req.body.password,
-                    isLoggedIn: true
+                    isLoggedIn: true,
+                    socket: req.body.socket
                 }, function(data) {
                     status = "user added";
                     console.log(status);
@@ -114,9 +116,11 @@ module.exports = function (app) {
 
         let match = Compare.compare(targetPhrase, userPhrase);
 
-        res.json(match.numMatchedTokens + " out of " + match.numTargetTokens + " words: " +
-            (match.percentage * 100).toFixed(1).toString() + "% Match (" + match.numCharactersMatched + " / " +
-            match.numTotalCharacters + " characters)");
+        // res.json(match.numMatchedTokens + " out of " + match.numTargetTokens + " words: " +
+        //     (match.percentage * 100).toFixed(1).toString() + "% Match (" + match.numCharactersMatched + " / " +
+        //     match.numTotalCharacters + " characters)");
+
+        res.json(match);
     });
 
     app.get("*", function (req, res) {
