@@ -22,7 +22,7 @@ class Signup extends Component {
 
         event.preventDefault();
 
-        API.submitNewUserInfo(this.state.username, this.state.password)
+        API.submitNewUserInfo({ username: this.state.username, password: this.state.password })
         .then(res => this.setState({ status: res.data }))
         .catch(err => console.log(err));
 

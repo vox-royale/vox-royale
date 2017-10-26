@@ -1,38 +1,69 @@
 import React, { Component } from "react";
+import openSocket from "socket.io-client";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { Link } from "react-router-dom";
+import { Link, withRouter, BrowserRouter, BrowserRouterProps } from "react-router-dom";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
+import './login.css';
 
 class Login extends Component {
     state = {
         username: "",
         password: "",
-        status: ""
+        status: "",
+        socket: "",
+        action: ""
     };
 
     componentDidMount = () => {
 
+        const socket = openSocket("https://vox-royale.herokuapp.com/");
+        const login = this;
+
+        socket.on("connect", function (data) {
+            socket.emit("join", "Hello Server from client id #");
+        });
+
+        socket.on("id", function (data) {
+            login.setState({ socket: data });
+        });
     }
 
+
     handleUserSubmit = event => {
-
+        const login = this;
         event.preventDefault();
+        API.getUser({
+            username: this.state.username,
+            password: this.state.password,
+            socket: this.state.socket
+        })
+            .then(function (res) {
+                login.setState({ status: res.data });
+                if (login.state.status === "username not found") {
+                    login.setState({ action: "Username not found. Please, sign up." });
 
-        API.getUser({username: this.state.username, password: this.state.password})
-        .then(res => this.setState({status: res.data}))
-        // .then(console.log(this.state.status))
-        .catch(err => console.log(err));
+                }
+                if (login.state.status === "authenticated") {
+                    
+                    login.setState({ action: "Enjoy your game!" });
+                    console.log("got here!");
+                }
+                if (login.state.status === "invalid password") {
 
-        // API.submitUserInfo(this.state.username, this.state.password)
-        // .then(res => this.setState({ status: res.data }))
-        // .catch(err => console.log(err));
+                    login.setState({ action: "Invalid password. Please, try again" })
+                }
+            })
+            .catch(err => console.log(err));
 
         // clear out input forms on submit
         this.setState({ username: "", password: "" });
     };
+
+
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -41,9 +72,11 @@ class Login extends Component {
         });
     };
 
+
     render = () => {
         return (
             <Container fluid>
+
                 <Row>
                     <Col size="md-12">
                         <Jumbotron>
@@ -52,7 +85,7 @@ class Login extends Component {
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
-                                    <br />
+                                    <h3>Socket ID: {this.state.socket}</h3>
                                     <label>Username {this.state.username}</label><br />
                                     <input
                                         name="username"
@@ -68,12 +101,46 @@ class Login extends Component {
                                         value={this.state.password}
                                         placeholder="Password" />
                                     <br /><br />
-                                    <FormBtn
+                                    <FormBtn data-toggle="modal" data-target="#exampleModalLong"
                                         disabled={(!this.state.username || !this.state.password)}
                                         onClick={this.handleUserSubmit}>
                                         Login
 				    	            </FormBtn>
-                                    <h2>{this.state.status}</h2>
+
+                                    {/* modal --start */}
+
+                                    <div className="modal fade" id="exampleModalLong" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div className="modal-dialog" role="document" id="modalDialog">
+                                            <div className="modal-content" id="modalContent">
+                                                <div className="modal-header">
+                                                    <h2 className="modal-title" id="exampleModalLongTitle"> {this.state.action}</h2>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    {this.state.status}
+                                                </div>
+                                                <div className="modal-footer">
+                                                    {this.state.status === "authenticated" ? (
+                                                        
+                                                        <Link to="/game">
+                                                            <StartBtn >
+                                                                <i className="fa fa-microphone" aria-hidden="true" ></i> Start
+                                                            </StartBtn>
+                                                        </Link>
+                                                        
+                                                    ) : (
+                                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* modal --end */}
+
+
+                                    
                                 </form>
                             </div>
                             <div id="sign-up">
@@ -82,11 +149,9 @@ class Login extends Component {
                                 </Link>
                             </div>
                             <br />
-                            <Link to="/game">
                                 <StartBtn>
                                     <i className="fa fa-microphone" aria-hidden="true"></i> Start
                                 </StartBtn>
-                            </Link>
                         </Jumbotron>
                     </Col>
                 </Row>
@@ -95,4 +160,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
