@@ -91,6 +91,7 @@ class Signup extends Component {
                                     <i className="fa fa-microphone" aria-hidden="true"></i> Start
                                 </StartBtn>
                             </Link>
+                            <img className="picture" src="Pictures.png" alt="pictures"/>
                         </Jumbotron>
                     </Col>
                 </Row>

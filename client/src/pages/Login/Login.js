@@ -151,11 +151,11 @@ class Login extends Component {
                                 </Link>
                             </div>
                             <br />
-                                <Link to="/game">
-                                    <StartBtn>
-                                        <i className="fa fa-microphone" aria-hidden="true"></i> Start
-                                    </StartBtn>
-                                </Link>
+                            <Link to="/game">
+                                <StartBtn>
+                                    <i className="fa fa-microphone" aria-hidden="true"></i> Start
+                                </StartBtn>
+                            </Link>
                             <img className="picture" src="Pictures.png" alt="pictures"/>
                         </Jumbotron>
                     </Col>
