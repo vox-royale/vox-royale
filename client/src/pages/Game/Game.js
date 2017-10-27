@@ -169,7 +169,8 @@ class Game extends Component {
 									className="text"
 									value={this.state.userPhrase}
 									onChange={this.handleInputChange}
-									name="userPhrase" />
+									name="userPhrase"
+									autocomplete="off" />
 								<FormBtn
 //									disabled={(!this.state.userPhrase || !this.state.inProgress)}
 									onClick={this.handlePhraseSubmit}>
