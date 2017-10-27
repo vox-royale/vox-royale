@@ -194,14 +194,14 @@ class Game extends Component {
 					<Col size="md-1">
 					</Col>
 				</Row>
-				{/* <Row>
+				<Row>
 					<Col size="md-12">
 						<p  id="userStatus">
 							<h2 id="fontH2">{this.state.roundStatus}</h2>
 							<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
 						</p>
 					</Col>
-				</Row> */}
+				</Row>
 				<br />
 				<Row>
 					<Col size="md-12">
