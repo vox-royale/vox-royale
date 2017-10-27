@@ -130,7 +130,6 @@ class Game extends Component {
 	render() {
 		return (
 			<Container fluid>
-				
 				<Row>
 					<Col size="md-12">
 						<div id="roundHeight">
