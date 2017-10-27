@@ -44,11 +44,10 @@ class Signup extends Component {
                     <Col size="md-12">
                         <Jumbotron>
                             <div id="title-container">
-                                <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
+                                <h1 id="title">VOX Royale</h1>
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
-                                    <br />
                                     <label>Username {this.state.username}</label><br />
                                     <input
                                         name="username"
@@ -71,6 +70,7 @@ class Signup extends Component {
                                         onChange={this.handleInputChange}
                                         value={this.state.verify}
                                         placeholder="Confirm Password" />
+                                    <br />
                                     <br />
                                     <FormBtn
                                         disabled={(!this.state.username || !this.state.password || this.state.verify !== this.state.password)}
