@@ -81,7 +81,7 @@ class Login extends Component {
                     <Col size="md-12">
                         <Jumbotron>
                             <div id="title-container">
-                                <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
+                                <h1 id="title">Vox Royale</h1>
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
@@ -91,7 +91,8 @@ class Login extends Component {
                                         name="username"
                                         onChange={this.handleInputChange}
                                         value={this.state.username}
-                                        placeholder="Username" />
+                                        placeholder="Username"
+                                        autoComplete="off" />
                                     <br /><br />
                                     <label >Password {this.state.password}</label><br />
                                     <input
@@ -99,7 +100,8 @@ class Login extends Component {
                                         type="password"
                                         onChange={this.handleInputChange}
                                         value={this.state.password}
-                                        placeholder="Password" />
+                                        placeholder="Password"
+                                        autoComplete="off" />
                                     <br /><br />
                                     <FormBtn data-toggle="modal" data-target="#exampleModalLong"
                                         disabled={(!this.state.username || !this.state.password)}
@@ -154,6 +156,7 @@ class Login extends Component {
                                         <i className="fa fa-microphone" aria-hidden="true"></i> Start
                                     </StartBtn>
                                 </Link>
+                            <img className="picture" src="Pictures.png" alt="pictures"/>
                         </Jumbotron>
                     </Col>
                 </Row>
