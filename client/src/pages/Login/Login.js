@@ -3,7 +3,7 @@ import openSocket from "socket.io-client";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { Link, withRouter, BrowserRouter, BrowserRouterProps } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import './login.css';
@@ -149,9 +149,11 @@ class Login extends Component {
                                 </Link>
                             </div>
                             <br />
-                                <StartBtn>
-                                    <i className="fa fa-microphone" aria-hidden="true"></i> Start
-                                </StartBtn>
+                                <Link to="/game">
+                                    <StartBtn>
+                                        <i className="fa fa-microphone" aria-hidden="true"></i> Start
+                                    </StartBtn>
+                                </Link>
                         </Jumbotron>
                     </Col>
                 </Row>
