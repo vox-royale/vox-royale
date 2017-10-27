@@ -132,10 +132,10 @@ class Game extends Component {
 				
 				<Row>
 					<Col size="md-12">
-						<p  id="roundHeight">
+						<div id="roundHeight">
 							<h2>{this.state.round === 0 ? " " : "Round: " + this.state.round}</h2>
 							<h3>{this.state.inProgress ? this.state.playerUp : " "}</h3>
-						</p>
+						</div>
 					</Col>
 				</Row>
 				<Row>
@@ -175,10 +175,10 @@ class Game extends Component {
 									onClick={this.handlePhraseSubmit}>
 									Submit
 								</FormBtn>
-								<p  id="userStatus">
+								<div  id="userStatus">
 									<h2 id="fontH2">{this.state.roundStatus}</h2>
 									<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
-								</p>
+								</div>
 							</form>
 						</Jumbotron>
 					</Col>
