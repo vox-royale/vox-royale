@@ -10,3 +10,33 @@
     padding: 20px, 10px, 30px;
     min-height: 700px;
 }
+#title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 100px;
+    text-align: center;
+    font-weight: normal;
+  
+  }
+  
+  a {
+    color: black;
+    text-align: center;
+    display: block;
+  }
+  
+  .picture {
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 800px;
+    max-height: 400px;
+  }
+
+  #login-container {
+      background-color: #f5eee1;
+  }
+
+  input {
+      padding-left: 5px;
+  }

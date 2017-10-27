@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
-import StartBtn from "../../components/StartBtn";
+import MainBtn from "../../components/StartBtn";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
+import "./Main.css";
+
 class Main extends Component {
   state = {
     newArticles: [],
@@ -36,19 +38,60 @@ class Main extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
+          <img className="favi" src="Favi.png" alt=""/>
+          <h1 id="title">VOX Royale</h1>
+          <div className="jumbotron jumbotron-fluid jumbotron-title">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
+                <p>{"Everyone needs more diction in their life. Use Vox Royale to make those pesky consonants work for you! Practice every day and you'll be a diction master!"}</p>
+                </div>
+                <div className="col-md-6">
+                <img className="img" src="Tech.png" alt="tech"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="jumbotron jumbotron-fluid jumbotron-title">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
+                <img className="img" src="Party.png" alt="party"/>
+                </div>
+                <div className="col-md-6">
+                <p>{"Step 1: Play Vox Royale. Step 2: LOL. Repeat. That's the easiest recipe for a good time! Hours of fun and laughs can be yours at your next party by adding Vox Royale to the mix!"}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="jumbotron jumbotron-fluid jumbotron-title">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
+                <p>{"The English language got you down? Maybe it's not your first language? Don't worry. Vox Royale is here to help. Playing our fun and exciting tongue twister game is a great way to train your tongue, mouth, and brain to start spitting out some sweet English phrases. Play today!"}</p>
+                </div>
+                <div className="col-md-6">
+                <img className="img" src="Enun.png" alt="ennunciation"/>
+                </div>
+              </div>
+            </div>
+          </div>
             <Jumbotron>
-                <div id="title-container">
+                {/* <div id="title-container">
                     <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
                 </div>
                 <img src="am1_460x288.jpg" alt="mic"/>
                 <br />
-                <br />
+                <br /> */}
                 <Link to="/login">
-                    <StartBtn>
+                    <MainBtn>
                         <i className="fa fa-microphone" aria-hidden="true"></i> Start
-                    </StartBtn>
+                    </MainBtn>
                 </Link>
             </Jumbotron>
+
           </Col>
         </Row>
       </Container>
