@@ -83,7 +83,7 @@ class Game extends Component {
 
 		clearInterval(this.state.interval);
 
-		let targetPhrase = this.state.phrases[0].title.trim();
+		let targetPhrase = this.state.phrases[0].phrase.trim();
 		let userPhrase = document.getElementById("inputPhrase").innerHTML
 
 		// hit server for string comparison.
