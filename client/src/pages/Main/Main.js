@@ -44,7 +44,8 @@ class Main extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                <p>{"Everyone needs more diction in their life. Use Vox Royale to make those pesky consonants work for you! Practice every day and you'll be a diction master!"}</p>
+                  <h2 className="main-block-header">{"Speech Therapy"}</h2>
+                  <p>{"Everyone needs more diction in their life. Use Vox Royale to make those pesky consonants work for you! Practice every day and you'll be a diction master!"}</p>
                 </div>
                 <div className="col-md-6">
                 <img className="img" src="Tech.png" alt="tech"/>
@@ -52,28 +53,28 @@ class Main extends Component {
               </div>
             </div>
           </div>
-
           <div className="jumbotron jumbotron-fluid jumbotron-title">
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                <img className="img" src="Party.png" alt="party"/>
+                <img className="img" src="Enun.png" alt="ennunciation"/>
                 </div>
                 <div className="col-md-6">
-                <p>{"Step 1: Play Vox Royale. Step 2: LOL. Repeat. That's the easiest recipe for a good time! Hours of fun and laughs can be yours at your next party by adding Vox Royale to the mix!"}</p>
+                  <h2 className="main-block-header">{"Accent Reduction"}</h2>
+                <p>{"The English language got you down? Maybe it's not your first language? Don't worry. Vox Royale is here to help. Playing our fun and exciting tongue twister game is a great way to train your tongue, mouth, and brain to start spitting out some sweet English phrases. Play today!"}</p>
                 </div>
               </div>
             </div>
           </div>
-
           <div className="jumbotron jumbotron-fluid jumbotron-title">
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                <p>{"The English language got you down? Maybe it's not your first language? Don't worry. Vox Royale is here to help. Playing our fun and exciting tongue twister game is a great way to train your tongue, mouth, and brain to start spitting out some sweet English phrases. Play today!"}</p>
+                  <h2 className="main-block-header">{"Party Game"}</h2>
+                <p>{"Step 1: Play Vox Royale. Step 2: LOL. Repeat. That's the easiest recipe for a good time! Hours of fun and laughs can be yours at your next party by adding Vox Royale to the mix!"}</p>
                 </div>
                 <div className="col-md-6">
-                <img className="img" src="Enun.png" alt="ennunciation"/>
+                <img className="img" src="Party.png" alt="party"/>
                 </div>
               </div>
             </div>

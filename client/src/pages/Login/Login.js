@@ -85,7 +85,7 @@ class Login extends Component {
                             </div>
                             <div id="login-container">
                                 <form id="login-form">
-                                    <h3>Socket ID: {this.state.socket}</h3>
+                                    {/* <h3>Socket ID: {this.state.socket}</h3> */}
                                     <label>Username {this.state.username}</label><br />
                                     <input
                                         name="username"

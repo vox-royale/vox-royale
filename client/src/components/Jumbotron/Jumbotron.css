@@ -26,9 +26,9 @@ img {
 
 #login-container {
 	margin: 0 auto;
-	background-color: white;
+	background-color: rgb(255, 255, 255);
 	padding: 20px;
-	height: 334px;
+	/* height: 334px; */
 	width: 506px;
 	max-width: 75%;
 	border-radius: 20px;
