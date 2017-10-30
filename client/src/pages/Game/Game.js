@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
-import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import Player from "./Player";
 import './game.css';
-import Footer from '../../components/Footer/Footer';
-
 
 class Game extends Component {
 	state = {
@@ -84,7 +82,7 @@ class Game extends Component {
 		clearInterval(this.state.interval);
 
 		let targetPhrase = this.state.phrases[0].phrase.trim();
-		let userPhrase = document.getElementById("inputPhrase").innerHTML
+		let userPhrase = document.getElementById("inputPhrase").innerHTML;
 
 		// hit server for string comparison.
 		// returns percentage match string to display
@@ -159,27 +157,19 @@ class Game extends Component {
 							<div id="timer">
 								<h2>{this.state.inProgress ? this.state.timer : " "}</h2>
 							</div>
-							<StartBtn onClick={() => this.startGame()}>
+							<StartBtn onClick={this.startGame}
+								id="startButton">
 								<i className="fa fa-microphone" aria-hidden="true"></i> Start
 							</StartBtn>
 							<br />
-							<h4 id = "inputPhrase">User Phrase: {this.state.userPhrase}</h4>
+							<h4 id="inputPhrase">{this.state.userPhrase}</h4>
 							<form>
-								<Input
-									className="text"
-									value={this.state.userPhrase}
-									onChange={this.handleInputChange}
-									name="userPhrase"
-									autoComplete="off" />
 								<FormBtn
 //									disabled={(!this.state.userPhrase || !this.state.inProgress)}
-									onClick={this.handlePhraseSubmit}>
+									onClick={this.handlePhraseSubmit}
+									id="submitButton">
 									Submit
 								</FormBtn>
-								<div  id="userStatus">
-									<h2 id="fontH2">{this.state.roundStatus}</h2>
-									<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
-								</div>
 							</form>
 						</Jumbotron>
 					</Col>
@@ -194,18 +184,12 @@ class Game extends Component {
 					<Col size="md-1">
 					</Col>
 				</Row>
-				{/* <Row>
-					<Col size="md-12">
-						<p  id="userStatus">
-							<h2 id="fontH2">{this.state.roundStatus}</h2>
-							<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
-						</p>
-					</Col>
-				</Row> */}
-				<br />
 				<Row>
 					<Col size="md-12">
-						 <Footer /> 
+						<div  id="userStatus">
+							<h2 id="fontH2">{this.state.roundStatus}</h2>
+							<h2 id="fontH2">{this.state.roundScoreDisplay}</h2>
+						</div>
 					</Col>
 				</Row>
 			</Container>
