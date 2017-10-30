@@ -66,7 +66,7 @@ class Main extends Component {
               </div>
             </div>
           </div>
-          <div className="jumbotron jumbotron-fluid jumbotron-title">
+          <div className="jumbotron jumbotron-fluid jumbotron-title" id="last-jumbo">
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
@@ -80,12 +80,6 @@ class Main extends Component {
             </div>
           </div>
             <Jumbotron>
-                {/* <div id="title-container">
-                    <h1 id="vox-title">VOX<span id="royale-badge">Royale</span></h1>
-                </div>
-                <img src="am1_460x288.jpg" alt="mic"/>
-                <br />
-                <br /> */}
                 <Link to="/login">
                     <MainBtn>
                         <i className="fa fa-microphone" aria-hidden="true"></i> Start
