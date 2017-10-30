@@ -25,6 +25,12 @@ class Game extends Component {
 		playerOneScore: 0,
 		playerTwoScore: 0,
 		playerUp: "Player One",
+		playerUpDisplay: "",
+		buttonID: "startButton",
+		buttonText: "Start",
+		recording: false,
+		thumbnailClass1: "thumbnail",
+		thumbnailClass2: "thumbnail"
 	};
 
 	componentDidMount() {
@@ -55,13 +61,28 @@ class Game extends Component {
 		});
 	};
 	
-	startGame = () => {
+	startGame = (event) => {
+
+		event.preventDefault();
 
 		this.loadPhrases();
 		clearInterval(this.state.interval);
 
 		if(this.state.playerUp === "Player One") {
 			this.setState({round: this.state.round + 1});
+			this.setState({
+				playerUpDisplay: "Player One",
+				thumbnailClass1: "thumbnail recording",
+				thumbnailClass2: "thumbnail"
+			});
+		}
+
+		else {
+			this.setState({
+				playerUpDisplay: "Player Two",
+				thumbnailClass2: "thumbnail recording",
+				thumbnailClass1: "thumbnail"
+			});
 		}
 
 		this.setState({
@@ -70,13 +91,16 @@ class Game extends Component {
 			roundStatus: "",
 			userPhrase: "",
 			roundScoreDisplay: "",
-			inProgress: true
+			inProgress: true,
+			recording: true
 		});
 	};
 
 	handlePhraseSubmit = event => {
 
 		event.preventDefault();
+
+		this.setState({ recording: false});
 		let game = this;
 
 		clearInterval(this.state.interval);
@@ -132,40 +156,43 @@ class Game extends Component {
 					<Col size="md-12">
 						<div id="roundHeight">
 							<h2>{this.state.round === 0 ? " " : "Round: " + this.state.round}</h2>
-							<h3>{this.state.inProgress ? this.state.playerUp : " "}</h3>
+							<h3>{this.state.playerUpDisplay}</h3>
 						</div>
 					</Col>
 				</Row>
 				<Row>
 					<Col size="md-12">
-					<p  id="textPhrase">{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.phrases[0].phrase}</strong>}</p>
+						<div id="textPhrase">
+							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.phrases[0].phrase}</strong>}
+						</div>
 					</Col>
 				</Row>
 				<Row>
 					<Col size="md-1">
 					</Col>
 					<Col size="md-2">
-						  <div className="thumbnail" id="thumbBord1">
+						  <div className={this.state.thumbnailClass1} id="thumbBord1">
 							<h2 id="playerTitle1">{this.state.users[0] ? this.state.users[0].username : this.state.playerOne}</h2>
 						  	<h2 id="playerScore1">{this.state.playerOneScore}</h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 
 						  </div>
 					</Col>
 					<Col size="md-6">
-						<Jumbotron>
+						<Jumbotron id="game-jumbo">
 							
 							<div id="timer">
-								<h2>{this.state.inProgress ? this.state.timer : " "}</h2>
+								<h2 id="timerText">{this.state.inProgress ? this.state.timer : " "}</h2>
 							</div>
-							<StartBtn onClick={this.startGame}
-								id="startButton">
-								<i className="fa fa-microphone" aria-hidden="true"></i> Start
-							</StartBtn>
 							<br />
+							<StartBtn onClick={this.startGame}
+								id="startButton"
+								disabled={this.state.recording}>
+								<i className="fa fa-microphone" aria-hidden="true"></i> {this.state.buttonText}
+							</StartBtn>
 							<h4 id="inputPhrase">{this.state.userPhrase}</h4>
 							<form>
 								<FormBtn
-//									disabled={(!this.state.userPhrase || !this.state.inProgress)}
+									disabled={!this.state.recording}
 									onClick={this.handlePhraseSubmit}
 									id="submitButton">
 									Submit
@@ -175,7 +202,7 @@ class Game extends Component {
 					</Col>
 					<Col size="md-2">
 					
-					<div className="thumbnail" id="thumbBord2">
+					<div className={this.state.thumbnailClass2} id="thumbBord2">
 						<h2 id="playerTitle2">{this.state.users[1] ? this.state.users[1].username : this.state.playerTwo}</h2>
 						  	<h2 id="playerScore2">{this.state.playerTwoScore}</h2>
 							<Player imgURL="https://d30y9cdsu7xlg0.cloudfront.net/png/16846-200.png" alter="image1"/> 

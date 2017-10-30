@@ -2,36 +2,61 @@ body {
     font-family: Circular, Calibre, Recta, Graphik;
     
 }
+
 #textPhrase {
     font-size: 24px;
+    height: 80px;
+}
+
+#inputPhrase {
+    height: 100px;
 }
 
 #topJumbo1, #topJumbo2{
     background-color: white;
     text-align: center;
-    }
+}
+
+#game-jumbo {
+    padding-bottom: 0px;
+}
 
 .thumbnail {
+    border: none;
     background-color: #f5eee1;
 }
+
 #thumbBord1, #thumbBord2 {
-    border: none;
     text-align: center;
 }
+
+.thumbnail.recording {
+    border: 2px solid black;
+}
+
 img{
     border: none;
     text-align: center;
     background-color: #f5eee1;
+    max-width: 100%;
 }
+
 #roundHeight{
     height: 90px;
 }
+
 #timer {
     height: 30px;
 }
-#userStatus{
+
+#timerText {
+    margin-top: 0px;
+}
+
+#userStatus {
     height: 60px;
 }
+
 #fontH2 {
     font-size: 24px;
 }
