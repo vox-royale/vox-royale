@@ -4,12 +4,14 @@ import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
+// import Speech from "../../utils/Speech";
 import Player from "./Player";
 import './game.css';
 
 class Game extends Component {
 	state = {
 		phrases: [],
+		targetPhrase: "",
 		users: [],
 		currPhraseToMatch: "",
 		userPhrase: "",
@@ -30,12 +32,14 @@ class Game extends Component {
 		buttonText: "Start",
 		recording: false,
 		thumbnailClass1: "thumbnail",
-		thumbnailClass2: "thumbnail"
+		thumbnailClass2: "thumbnail",
+		gameOver: false
 	};
 
 	componentDidMount() {
 		this.setState({phrases: [{phrase: "Press start to begin"}]});
 		this.loadUsers();
+		this.loadPhrases();
 	}
 
 	loadUsers = () => {
@@ -60,12 +64,27 @@ class Game extends Component {
 			[name]: value
 		});
 	};
+
+	getTargetPhrase = () => {
+
+		// get a random phrase and remove from phrases array
+		if(this.state.phrases.length > 0) {
+			let tempPhrases = this.state.phrases;
+			let tempPhrase = tempPhrases.splice(Math.floor(Math.random() * tempPhrases.length), 1);
+
+			// set targetPhrase and phrases array
+			this.setState({
+				phrases: tempPhrases,
+				targetPhrase: tempPhrase[0].phrase
+			});
+		}
+	}
 	
 	startGame = (event) => {
 
 		event.preventDefault();
 
-		this.loadPhrases();
+		this.getTargetPhrase();
 		clearInterval(this.state.interval);
 
 		if(this.state.playerUp === "Player One") {
@@ -105,7 +124,7 @@ class Game extends Component {
 
 		clearInterval(this.state.interval);
 
-		let targetPhrase = this.state.phrases[0].phrase.trim();
+		let targetPhrase = this.state.targetPhrase.trim();
 		let userPhrase = document.getElementById("inputPhrase").innerHTML;
 
 		// hit server for string comparison.
@@ -140,6 +159,11 @@ class Game extends Component {
 						playerTwoScore: game.state.playerTwoScore + game.state.roundScore,
 						playerUp: "Player One"
 					});
+
+					// if Game Over
+					if(game.state.round === 5) {
+						game.state.gameOver = true;
+					}
 				}
 			})
 			.catch(err => console.log(err));
@@ -163,7 +187,7 @@ class Game extends Component {
 				<Row>
 					<Col size="md-12">
 						<div id="textPhrase">
-							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.phrases[0].phrase}</strong>}
+							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.targetPhrase}</strong>}
 						</div>
 					</Col>
 				</Row>
