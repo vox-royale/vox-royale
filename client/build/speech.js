@@ -8059,13 +8059,15 @@ function stopListening() {
     }
 }
 
-$(document).ready(function() {
-
-  if(document.querySelector('#startButton')) {
-    document.querySelector('#startButton').onclick = startListening;
-  }
-
-  if(document.querySelector('#submitButton')){
-    document.querySelector('#submitButton').onclick = stopListening;
-  }
+$(document).click(function() {
+  $(document).ready(function() {
+    
+      if(document.querySelector('#startButton')) {
+        document.querySelector('#startButton').onclick = startListening;
+      }
+    
+      if(document.querySelector('#submitButton')){
+        document.querySelector('#submitButton').onclick = stopListening;
+      }
+    });
 });
