@@ -80,9 +80,14 @@ class Main extends Component {
             </div>
           </div>
             <Jumbotron>
-                <Link to="/login">
+              <Link to="/game">
+                  <MainBtn>
+                      <i className="fa fa-microphone" aria-hidden="true"></i> Start Game
+                  </MainBtn>
+              </Link>
+                <Link to="/practice">
                     <MainBtn>
-                        <i className="fa fa-microphone" aria-hidden="true"></i> Start
+                        <i className="fa fa-microphone" aria-hidden="true"></i> Practice
                     </MainBtn>
                 </Link>
             </Jumbotron>

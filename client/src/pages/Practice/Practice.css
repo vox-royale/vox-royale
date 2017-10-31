@@ -1,0 +1,48 @@
+body {
+    font-family: Circular, Calibre, Recta, Graphik;
+}
+
+#textPhrase {
+    font-size: 24px;
+}
+
+#topJumbo1, #topJumbo2{
+    background-color: white;
+    text-align: center;
+    }
+
+.thumbnail {
+    background-color: #f5eee1;
+}
+
+#thumbBord1, #thumbBord2 {
+    border: none;
+    text-align: center;
+}
+
+img{
+    border: none;
+    text-align: center;
+    background-color: #f5eee1;
+}
+
+#roundHeight{
+    height: 90px;
+}
+
+#timer {
+    height: 30px;
+}
+
+#userStatus{
+    height: 60px;
+}
+
+#fontH2 {
+    font-size: 24px;
+}
+
+/*hack to get around the background not being dismissed*/
+.modal-backdrop.fade.show {
+    display: none !important;
+}
