@@ -27,7 +27,7 @@ class Signup extends Component {
         .catch(err => console.log(err));
 
         // clear out input forms on submit
-        this.setState({ username: "", password: "" });
+        this.setState({ username: "", password: "", verify: "" });
     };
 
     handleInputChange = event => {

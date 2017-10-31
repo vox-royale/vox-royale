@@ -8059,9 +8059,13 @@ function stopListening() {
     }
 }
 
-function func() {
-	document.querySelector('#startButton').onclick = startListening;
-}
-window.setTimeout(func, 100);
+$(document).ready(function() {
 
-document.querySelector('#submitButton').onclick = stopListening;
+  if(document.querySelector('#startButton')) {
+    document.querySelector('#startButton').onclick = startListening;
+  }
+
+  if(document.querySelector('#submitButton')){
+    document.querySelector('#submitButton').onclick = stopListening;
+  }
+});

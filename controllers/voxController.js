@@ -17,7 +17,7 @@ module.exports = function (app, client) {
             }
             else {
                 onePhrase.push(data[Math.floor(Math.random() * data.length)]);
-                res.json(onePhrase);
+                res.json(data);
             }
         });
     });
@@ -115,10 +115,6 @@ module.exports = function (app, client) {
         userPhrase = req.body.userPhrase;
 
         let match = Compare.compare(targetPhrase, userPhrase);
-
-        // res.json(match.numMatchedTokens + " out of " + match.numTargetTokens + " words: " +
-        //     (match.percentage * 100).toFixed(1).toString() + "% Match (" + match.numCharactersMatched + " / " +
-        //     match.numTotalCharacters + " characters)");
 
         res.json(match);
     });
