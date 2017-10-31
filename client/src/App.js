@@ -10,10 +10,10 @@ const App = function() {
 
   return <Router>
   <div>
-      <Route exact path="/" component={Main} />
+      {/* <Route exact path="/" component={Main} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/game" component={Game} />
+      <Route exact path="/signup" component={Signup} /> */}
+      <Route exact path="/" component={Game} />
   </div>
 </Router>;
 }
