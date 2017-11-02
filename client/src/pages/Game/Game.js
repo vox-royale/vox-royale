@@ -13,7 +13,6 @@ class Game extends Component {
 		phrases: [],
 		targetPhrase: "",
 		users: [],
-		currPhraseToMatch: "",
 		userPhrase: "",
 		timer: 0,
 		round: 0,
@@ -28,8 +27,6 @@ class Game extends Component {
 		playerTwoScore: 0,
 		playerUp: "Player One",
 		playerUpDisplay: "",
-		buttonID: "startButton",
-		buttonText: "Start",
 		recording: false,
 		thumbnailClass1: "thumbnail",
 		thumbnailClass2: "thumbnail",
@@ -179,7 +176,7 @@ class Game extends Component {
 				<Row>
 					<Col size="md-12">
 						<div id="roundHeight">
-							<h2>{this.state.round === 0 ? " " : "Round: " + this.state.round}</h2>
+							<h2>{this.state.round === 0 ? " " : "Round " + this.state.round}</h2>
 							<h3>{this.state.playerUpDisplay}</h3>
 						</div>
 					</Col>
@@ -211,7 +208,7 @@ class Game extends Component {
 							<StartBtn onClick={this.startGame}
 								id="startButton"
 								disabled={this.state.recording}>
-								<i className="fa fa-microphone" aria-hidden="true"></i> {this.state.buttonText}
+								<i className="fa fa-microphone" aria-hidden="true"></i> Start
 							</StartBtn>
 							<h4 id="inputPhrase">{this.state.userPhrase}</h4>
 							<form>

@@ -45,9 +45,6 @@ const phraseSeed = [
     phrase: "I wish to wish the wish you wish to wish but if you wish the wish the witch wishes I won't wish the wish you wish to wish"
   },
   {
-    phrase: "birdie birdie in the sky laid a turdy in my eye if cows could fly I'd have a cow pie in my eye"
-  },
-  {
     phrase: "how much caramel can a canny canonball cram in a camel if a canny canonball can cram caramel in a camel"
   },
   {
@@ -73,12 +70,6 @@ const phraseSeed = [
   },
   {
     phrase: "which wrist watches are Swiss wrist watches"
-  },
-  {
-    phrase: "he threw 3 free throws"
-  },
-  {
-    phrase: "Tim threw 3 thumbtacks"
   },
   {
     phrase: "red buick blue buick red buick blue buick red buick blue buick"
@@ -117,13 +108,10 @@ const phraseSeed = [
     phrase: "snap crackle pop snap crackle pop snap crackle pop"
   },
   {
-    phrase: "4 fine fresh fish for you"
-  },
-  {
     phrase: "flash message flash message flash message"
   },
   {
-    phrase: "Fuzzy Wuzzy was a bear Fuzzy Wuzzy had no hair Fuzzy Wuzzy wasn’t fuzzy was he"
+    phrase: "Fuzzy Wuzzy was a bear Fuzzy Wuzzy had no hair Fuzzy Wuzzy wasn't fuzzy was he"
   },
   {
     phrase: "I scream you scream we all scream for ice cream"

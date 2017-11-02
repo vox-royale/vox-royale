@@ -6,10 +6,9 @@ body {
     font-size: 24px;
 }
 
-#topJumbo1, #topJumbo2{
-    background-color: white;
-    text-align: center;
-    }
+#practice-jumbo {
+    padding-bottom: 0px;
+}
 
 .thumbnail {
     background-color: #f5eee1;
@@ -26,8 +25,8 @@ img{
     background-color: #f5eee1;
 }
 
-#roundHeight{
-    height: 90px;
+#round{
+    height: 50px;
 }
 
 #timer {
@@ -40,9 +39,4 @@ img{
 
 #fontH2 {
     font-size: 24px;
-}
-
-/*hack to get around the background not being dismissed*/
-.modal-backdrop.fade.show {
-    display: none !important;
 }
