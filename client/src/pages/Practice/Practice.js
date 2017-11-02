@@ -9,10 +9,12 @@ import './Practice.css';
 class Game extends Component {
 	state = {
 		phrases: [],
+		phrasesMaster: [],
 		targetPhrase: "",
 		userPhrase: "",
 		timer: 0,
 		round: 0,
+		counter: 0,
 		roundStatus: "",
 		roundScore: 0,
 		roundScoreDisplay: "",
@@ -28,10 +30,13 @@ class Game extends Component {
 	}
 
 	loadPhrases = () => {
+		
+		let game = this;
 		API.getPhrases()
-			.then(res =>
-				this.setState({ phrases: res.data })
-			)
+			.then(res => {
+				game.setState({ phrases: res.data });
+				game.setState({ phrasesMaster: game.state.phrases.slice(0) });
+			})
 			.catch(err => console.log(err));
 	};
 
@@ -45,6 +50,7 @@ class Game extends Component {
 	startGame = (event) => {
 
 		event.preventDefault();
+		this.state.counter++;
 
 		this.getTargetPhrase();
 		clearInterval(this.state.interval);
@@ -62,9 +68,14 @@ class Game extends Component {
 	};
 
 	getTargetPhrase = () => {
-		
+	
+		// handle case where phrases is empty & refresh.
+		if(this.state.phrases.length === 0) {
+			this.setState({ phrases: this.state.phrasesMaster.slice(0) });
+		}
+
 		// get a random phrase and remove from phrases array
-		if(this.state.phrases.length > 0) {
+		else {
 			let tempPhrases = this.state.phrases;
 			let tempPhrase = tempPhrases.splice(Math.floor(Math.random() * tempPhrases.length), 1);
 
@@ -73,9 +84,6 @@ class Game extends Component {
 				phrases: tempPhrases,
 				targetPhrase: tempPhrase[0].phrase
 			});
-
-			console.log(tempPhrases);
-			console.log(this.state.targetPhrase);
 		}
 	}
 
@@ -101,12 +109,12 @@ class Game extends Component {
 					res.data.numTotalCharacters + " characters)" });
 					
 				game.setState({
-					roundScore: Math.round(res.data.percentage * 100) + res.data.numCharactersMatched + (60 - game.state.timer)
+					roundScore: Math.round(res.data.percentage * 100) + res.data.numCharactersMatched + (20 - game.state.timer)
 				});
 
 				game.setState({
 					roundScoreDisplay: "Score: " + Math.round(res.data.percentage * 100) + " + " +
-					res.data.numCharactersMatched + " + " + (60 - game.state.timer) + " = " + game.state.roundScore
+					res.data.numCharactersMatched + " + " + (20 - game.state.timer) + " = " + game.state.roundScore
 				});
 				
 
@@ -124,13 +132,17 @@ class Game extends Component {
 	render() {
 		return (
 			<Container fluid>
+				<div id="nav">
+					<a id="game-link" href="/game"><span>Play Game</span></a>
+				</div>
 				<Row>
 					<Col size="md-12">
-						<div id="round">
-							<h2>{this.state.round === 0 ? " " : "Round " + this.state.round}</h2>
+						<div id="roundHeight">
+							<h2>Practice</h2>
+							<h3>Phrase Count: {this.state.counter}</h3>
 						</div>
 						<div  id="textPhrase">
-							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.targetPhrase}</strong>}
+							<h3>{(!this.state.inProgress) ? "Press start to begin" : this.state.targetPhrase}</h3>
 						</div>
 						<Jumbotron id="practice-jumbo">
 							<div id="timer">

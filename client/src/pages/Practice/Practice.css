@@ -2,6 +2,16 @@ body {
     font-family: Circular, Calibre, Recta, Graphik;
 }
 
+#nav {
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: right;
+}
+
+#game-link {
+    display: inline;
+}
+
 #textPhrase {
     font-size: 24px;
 }

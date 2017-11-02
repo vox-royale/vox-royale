@@ -4,13 +4,13 @@ import Jumbotron from "../../components/Jumbotron";
 import StartBtn from "../../components/StartBtn";
 import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
-// import Speech from "../../utils/Speech";
 import Player from "./Player";
 import './game.css';
 
 class Game extends Component {
 	state = {
 		phrases: [],
+		phrasesMaster: [],
 		targetPhrase: "",
 		users: [],
 		userPhrase: "",
@@ -30,28 +30,36 @@ class Game extends Component {
 		recording: false,
 		thumbnailClass1: "thumbnail",
 		thumbnailClass2: "thumbnail",
-		gameOver: false
+		gameOver: false,
+		gameOverMessage: "",
+		gameModalClass: "game-modal-hidden"
 	};
 
 	componentDidMount() {
 		this.setState({phrases: [{phrase: "Press start to begin"}]});
-		this.loadUsers();
+		// this.loadUsers();
 		this.loadPhrases();
 	}
 
 	loadUsers = () => {
+
+		let game = this;
+
 		API.getUsers()
-			.then(res =>
-				this.setState({ users: res.data })
-			)
+			.then(res => {
+				game.setState({ users: res.data });
+			})
 			.catch(err => console.log(err));
 	};
 
 	loadPhrases = () => {
+
+		let game = this;
 		API.getPhrases()
-			.then(res =>
-				this.setState({ phrases: res.data })
-			)
+			.then(res => {
+				game.setState({ phrases: res.data });
+				game.setState({ phrasesMaster: game.state.phrases.slice(0) });
+			})
 			.catch(err => console.log(err));
 	};
 
@@ -64,8 +72,13 @@ class Game extends Component {
 
 	getTargetPhrase = () => {
 
+		// handle case where phrases is empty & refresh.
+		if(this.state.phrases.length === 0) {
+			this.setState({ phrases: this.state.phrasesMaster.slice(0) });
+		}
+
 		// get a random phrase and remove from phrases array
-		if(this.state.phrases.length > 0) {
+		else {
 			let tempPhrases = this.state.phrases;
 			let tempPhrase = tempPhrases.splice(Math.floor(Math.random() * tempPhrases.length), 1);
 
@@ -105,11 +118,12 @@ class Game extends Component {
 			timer: 0,
 			interval: setInterval(this.increment, 1000),
 			roundStatus: "",
-			userPhrase: "",
 			roundScoreDisplay: "",
 			inProgress: true,
 			recording: true
 		});
+
+		document.getElementById("inputPhrase").innerHTML = "";
 	};
 
 	handlePhraseSubmit = event => {
@@ -134,12 +148,12 @@ class Game extends Component {
 					res.data.numTotalCharacters + " characters)" });
 					
 				game.setState({
-					roundScore: Math.round(res.data.percentage * 100) + res.data.numCharactersMatched + (60 - game.state.timer)
+					roundScore: Math.round(res.data.percentage * 100) + res.data.numCharactersMatched + (20 - game.state.timer)
 				});
 
 				game.setState({
 					roundScoreDisplay: "Score: " + Math.round(res.data.percentage * 100) + " + " +
-					res.data.numCharactersMatched + " + " + (60 - game.state.timer) + " = " + game.state.roundScore
+					res.data.numCharactersMatched + " + " + (20 - game.state.timer) + " = " + game.state.roundScore
 				});
 				
 				// update player one score
@@ -160,11 +174,50 @@ class Game extends Component {
 					// if Game Over
 					if(game.state.round === 5) {
 						game.state.gameOver = true;
+						setTimeout(game.endGame, 500);
 					}
 				}
 			})
 			.catch(err => console.log(err));
 	};
+
+	endGame = () => {
+
+		//player one wins
+		if(this.state.playerOneScore > this.state.playerTwoScore) {
+			this.setState({ gameOverMessage: "Player One Wins!" });
+		}
+
+		//player two wins
+		else {
+			this.setState({ gameOverMessage: "Player Two Wins!" });
+		}
+
+		this.setState({
+			round: 0,
+			timer: 0,
+			playerUp: "Player One",
+			playerUpDisplay: "",
+			recording: false,
+			thumbnailClass1: "thumbnail",
+			thumbnailClass2: "thumbnail",
+			gameOver: false,
+			targetPhrase: "Press start to begin",
+			gameModalClass: "game-modal-shown"
+		})
+	};
+
+	dismissModal = () => {
+		this.setState({
+			gameModalClass: "game-modal-hidden",
+			playerOneScore: 0,
+			playerTwoScore: 0,
+			roundScoreDisplay: "",
+			roundStatus: "",
+		});
+
+		document.getElementById("inputPhrase").innerHTML = "";
+	}
 
 	increment = () => {
 		this.setState({ timer: this.state.timer + 1 });
@@ -173,6 +226,9 @@ class Game extends Component {
 	render() {
 		return (
 			<Container fluid>
+				<div id="nav">
+					<a id="game-link" href="/practice"><span>Practice</span></a>
+				</div>
 				<Row>
 					<Col size="md-12">
 						<div id="roundHeight">
@@ -184,7 +240,7 @@ class Game extends Component {
 				<Row>
 					<Col size="md-12">
 						<div id="textPhrase">
-							{<strong>{(!this.state.inProgress) ? "Press start to begin" : this.state.targetPhrase}</strong>}
+							<h3>{(!this.state.inProgress) ? "Press start to begin" : this.state.targetPhrase}</h3>
 						</div>
 					</Col>
 				</Row>
@@ -219,6 +275,15 @@ class Game extends Component {
 									Submit
 								</FormBtn>
 							</form>
+							<div id="game-modal" className={this.state.gameModalClass}>
+								<h2>Game Over</h2>
+								<hr />
+								<h3>{this.state.gameOverMessage}</h3>
+								<br />
+								<button className="btn btn-default"
+										onClick={this.dismissModal}>Ok
+								</button>
+							</div>
 						</Jumbotron>
 					</Col>
 					<Col size="md-2">

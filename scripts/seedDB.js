@@ -60,9 +60,6 @@ const phraseSeed = [
     phrase: "Betty bought a bit of butter but she found the butter bitter so Betty bought a bit of better butter to make the bitter butter better"
   },
   {
-    phrase: "6 sticky skeletons 6 sticky skeletons 6 sticky skeletons"
-  },
-  {
     phrase: "11 benevolent elephants 11 benevolent elephants 11 benevolent elephants"
   },
   {
@@ -87,10 +84,7 @@ const phraseSeed = [
     phrase: "flash message flash message flash message"
   },
   {
-    phrase: "Fred fed Ted bread and Ted fed Fred bread"
-  },
-  {
-    phrase: "we surely shall see the sun shine soon"
+    phrase: "we surely shall see the sunshine soon"
   },
   {
     phrase: "I saw a kitten eating chicken in the kitchen"
@@ -108,9 +102,6 @@ const phraseSeed = [
     phrase: "snap crackle pop snap crackle pop snap crackle pop"
   },
   {
-    phrase: "flash message flash message flash message"
-  },
-  {
     phrase: "Fuzzy Wuzzy was a bear Fuzzy Wuzzy had no hair Fuzzy Wuzzy wasn't fuzzy was he"
   },
   {
@@ -120,16 +111,43 @@ const phraseSeed = [
     phrase: "how much wood would a woodchuck chuck if a woodchuck could chuck wood"
   },
   {
-    phrase: "9 nice night nurses nursing nicely"
-  },
-  {
-    phrase: "stupid superstition"
-  },
-  {
     phrase: "if a dog chews shoes whose shoes does he choose"
   },
   {
     phrase: "truly rural truly rural truly rural"
+  },
+  {
+    phrase: "Six sleek swans swam swiftly southward"
+  },
+  {
+    phrase: "Gobbling gargoyles gobbled gobbling goblins"
+  },
+  {
+    phrase: "Seven slick slimy snakes slowly sliding southward"
+  },
+  {
+    phrase: "She was peculiarly waiting for him to pick peanuts"
+  },
+  {
+    phrase: "Excited executioner exercising his excising powers excessively"
+  },
+  {
+    phrase: "If you notice this notice you will notice that this notice is not worth noticing"
+  },
+  {
+    phrase: "Big black bugs bleed blue black blood but baby black bugs bleed blue blood"
+  },
+  {
+    phrase: "One smart fellow he felt smart two smart fellows they both felt smart three smart fellows they all felt smart"
+  },
+  {
+    phrase: "A tutor who tooted the flute tried to tutor two tooters to toot"
+  },
+  {
+    phrase: "These thousand tricky tongue twisters trip thrillingly off the tongue"
+  },
+  {
+    phrase: "pad kid poured curd pulled cold pad kid poured curd pulled cold"
   }
 ];
 

@@ -1,14 +1,13 @@
 #navBarColor {
     background-color: #f5eee1;
-   color: #f5eee1;
+    color: #f5eee1;
     border: none;
 }
-#brandName {
-    color: #f5eee1;
-    pointer-events: none;
-    cursor: default;
-     
+
+#header {
+    text-align: right;
 }
+
 #linkColor {
     color:#f5eee1; 
 }

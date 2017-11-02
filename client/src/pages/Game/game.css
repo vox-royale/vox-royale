@@ -1,6 +1,12 @@
 body {
-    font-family: Circular, Calibre, Recta, Graphik;
-    
+        font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+}
+
+#nav {
+    font-family: 'Varela Round', sans-serif;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: right;
 }
 
 #textPhrase {
@@ -18,7 +24,30 @@ body {
 }
 
 #game-jumbo {
+    position: relative;
     padding-bottom: 0px;
+}
+
+#game-modal.game-modal-hidden {
+    position: absolute;
+    margin: 0 auto;
+    display: none;
+}
+
+#game-modal.game-modal-shown {
+    position: absolute;
+    background-color: #f5eee1;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -100px;
+    z-index: 99;
+    width: 75%;
+    height: 350px;
+    display: block;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 30px;
 }
 
 .thumbnail {
