@@ -8059,37 +8059,6 @@ function stopListening() {
     }
 }
 
-// $(document).ready(function() {
-//   if(document.querySelector('#startButton')) {
-//     document.querySelector('#startButton').onclick = startListening;
-//     document.querySelector('#submitButton').onclick = stopListening;
-//   }
-//   else {
-//     $(document).click(function() {
-//       $(document).ready(function() {
-        
-//         if(document.querySelector('#startButton')) {
-//           document.querySelector('#startButton').onclick = startListening;
-//           document.querySelector('#submitButton').onclick = stopListening;
-//         }
-//       });
-//     });
-//   }
-// });
-
 $(document).on("click", "#replayButton", startListening);
 $(document).on("click", "#startButton", startListening);
 $(document).on("click", "#submitButton", stopListening);
-
-// $(document).click(function() {
-//   $(document).ready(function() {
-    
-//       if(document.querySelector('#startButton')) {
-//         document.querySelector('#startButton').onclick = startListening;
-//         document.querySelector('#submitButton').onclick = stopListening;
-//       }
-    
-//       if(document.querySelector('#submitButton')){
-//       }
-//     });
-// });
