@@ -73,7 +73,7 @@ class Game extends Component {
 	getTargetPhrase = () => {
 
 		// handle case where phrases is empty & refresh.
-		if(this.state.phrases.length === 0) {
+		if(this.state.phrases.length <= 1) {
 			this.setState({ phrases: this.state.phrasesMaster.slice(0) });
 		}
 
@@ -232,7 +232,8 @@ class Game extends Component {
 				<Row>
 					<Col size="md-12">
 						<div id="roundHeight">
-							<h2>{this.state.round === 0 ? " " : "Round " + this.state.round}</h2>
+							<h2>{this.state.round === 0 ? (<span id="vox">VOX Royale</span>)
+							 : "Round " + this.state.round}</h2>
 							<h3>{this.state.playerUpDisplay}</h3>
 						</div>
 					</Col>

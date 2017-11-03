@@ -120,7 +120,7 @@ const phraseSeed = [
     phrase: "Six sleek swans swam swiftly southward"
   },
   {
-    phrase: "Gobbling gargoyles gobbled gobbling goblins"
+    phrase: "Success seeds success  Success seeds success  Success seeds success"
   },
   {
     phrase: "Seven slick slimy snakes slowly sliding southward"
@@ -141,13 +141,37 @@ const phraseSeed = [
     phrase: "One smart fellow he felt smart two smart fellows they both felt smart three smart fellows they all felt smart"
   },
   {
-    phrase: "A tutor who tooted the flute tried to tutor two tooters to toot"
+    phrase: "a tutor who tooted the flute tried to tutor two tooters to toot"
   },
   {
-    phrase: "These thousand tricky tongue twisters trip thrillingly off the tongue"
+    phrase: "these thousand tricky tongue twisters trip thrillingly off the tongue"
   },
   {
     phrase: "pad kid poured curd pulled cold pad kid poured curd pulled cold"
+  },
+  {
+    phrase: "an ape hates grape cakes an ape hates grape cakes an ape hates grape cakes"
+  },
+  {
+    phrase: "of all the smells I have ever smelt I never smelt a smell that smelt like that smell smelt"
+  },
+  {
+    phrase: "a box of biscuits a batch of mixed biscuits a box of biscuits a batch of mixed biscuits"
+  },
+  {
+    phrase: "toy boat toy boat toy boat toy boat toy boat toy boat toy boat toy boat"
+  },
+  {
+    phrase: "the shells she sells are surely seashells I'm sure she sells seashore shells"
+  },
+  {
+    phrase: "Sam's shop stocks short spotted socks"
+  },
+  {
+    phrase: "Vincent vowed vengeance very vehemently"
+  },
+  {
+    phrase: "While we were walking we were watching window washers wash Washington's windows with warm washing water"
   }
 ];
 

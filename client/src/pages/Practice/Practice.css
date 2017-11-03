@@ -24,6 +24,10 @@ body {
     background-color: #f5eee1;
 }
 
+#replayButton {
+    margin-left: 10px;
+}
+
 img{
     border: none;
     text-align: center;

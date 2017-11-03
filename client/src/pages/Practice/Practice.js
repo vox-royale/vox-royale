@@ -67,10 +67,28 @@ class Game extends Component {
 		});
 	};
 
+	replay = (event) => {
+
+		event.preventDefault();
+		this.state.counter++;
+		clearInterval(this.state.interval);
+
+		this.setState({
+			timer: 0,
+			round: this.state.round + 1,
+			interval: setInterval(this.increment, 1000),
+			roundStatus: "",
+			userPhrase: "",
+			roundScoreDisplay: "",
+			inProgress: true,
+			recording: true
+		});
+	}
+
 	getTargetPhrase = () => {
 	
 		// handle case where phrases is empty & refresh.
-		if(this.state.phrases.length === 0) {
+		if(this.state.phrases.length <= 1) {
 			this.setState({ phrases: this.state.phrasesMaster.slice(0) });
 		}
 
@@ -138,7 +156,7 @@ class Game extends Component {
 				<Row>
 					<Col size="md-12">
 						<div id="roundHeight">
-							<h2>Practice</h2>
+							<h2><span id="vox">VOX Royale</span></h2>
 							<h3>Phrase Count: {this.state.counter}</h3>
 						</div>
 						<div  id="textPhrase">
@@ -154,6 +172,12 @@ class Game extends Component {
 								disabled={this.state.recording}>
 								<i className="fa fa-microphone" aria-hidden="true"></i> Start
 							</StartBtn>
+							{(this.state.inProgress && !this.state.recording) ? (
+								<button onClick={this.replay}
+								id="replayButton"
+								className="btn btn-default">Replay Phrase
+								</button>
+							 ) : ""}
 							<h4 id="inputPhrase">{this.state.userPhrase}</h4>
 							<form>
 								<FormBtn
