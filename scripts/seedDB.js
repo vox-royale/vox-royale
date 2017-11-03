@@ -63,9 +63,6 @@ const phraseSeed = [
     phrase: "11 benevolent elephants 11 benevolent elephants 11 benevolent elephants"
   },
   {
-    phrase: "good blood bad blood good blood bad blood good blood bad blood"
-  },
-  {
     phrase: "which wrist watches are Swiss wrist watches"
   },
   {
@@ -73,9 +70,6 @@ const phraseSeed = [
   },
   {
     phrase: "wayne went to wales to watch walruses"
-  },
-  {
-    phrase: "thin sticks thick bricks thin sticks thick bricks thin sticks thick bricks"
   },
   {
     phrase: "stupid superstition stupid superstition stupid superstition"
@@ -120,12 +114,6 @@ const phraseSeed = [
     phrase: "Six sleek swans swam swiftly southward"
   },
   {
-    phrase: "Success seeds success  Success seeds success  Success seeds success"
-  },
-  {
-    phrase: "Seven slick slimy snakes slowly sliding southward"
-  },
-  {
     phrase: "She was peculiarly waiting for him to pick peanuts"
   },
   {
@@ -139,9 +127,6 @@ const phraseSeed = [
   },
   {
     phrase: "One smart fellow he felt smart two smart fellows they both felt smart three smart fellows they all felt smart"
-  },
-  {
-    phrase: "a tutor who tooted the flute tried to tutor two tooters to toot"
   },
   {
     phrase: "these thousand tricky tongue twisters trip thrillingly off the tongue"
@@ -166,9 +151,6 @@ const phraseSeed = [
   },
   {
     phrase: "Sam's shop stocks short spotted socks"
-  },
-  {
-    phrase: "Vincent vowed vengeance very vehemently"
   },
   {
     phrase: "While we were walking we were watching window washers wash Washington's windows with warm washing water"
