@@ -65,6 +65,8 @@ class Game extends Component {
 			inProgress: true,
 			recording: true
 		});
+
+		document.getElementById("inputPhrase").innerHTML = "";
 	};
 
 	replay = (event) => {
@@ -78,11 +80,12 @@ class Game extends Component {
 			round: this.state.round + 1,
 			interval: setInterval(this.increment, 1000),
 			roundStatus: "",
-			userPhrase: "",
 			roundScoreDisplay: "",
 			inProgress: true,
 			recording: true
 		});
+
+		document.getElementById("inputPhrase").innerHTML = "";
 	}
 
 	getTargetPhrase = () => {
